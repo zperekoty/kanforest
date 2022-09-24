@@ -16,9 +16,9 @@ const Payments = (): JSX.Element => {
                 <Card />
             </div>
 
-            <section>
+            <section className={classes.info}>
                 <h3 className={styles["sub-head-text"]}>
-                    мы поддерживаем самые <span>популярные</span> способы оплаты
+                    поддерживаем самые <span>популярные</span> способы оплаты
                 </h3>
 
                 <div className={classes["payments-cards"]}>

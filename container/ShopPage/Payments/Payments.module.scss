@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 
     margin-top: 20px;
 
@@ -36,4 +36,11 @@
 
         margin: 0 auto;
     }
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
