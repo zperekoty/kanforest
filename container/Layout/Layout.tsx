@@ -50,6 +50,7 @@ const Layout = ({ children, title, desc, kw, links }: Props): JSX.Element => {
                     name="google-site-verification"
                     content="RDo5e_d1peoiDM0QDHcjJzuxjKxHN3661yCV64QI9ww"
                 />
+                <meta name="yandex-verification" content="1f039b3583039e1f" />
                 <title>{title}</title>
             </Head>
 
