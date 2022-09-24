@@ -1,6 +1,5 @@
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
-import React from "react";
 
 type tClient = {
     projectId: string;
@@ -18,8 +17,19 @@ export const client = sanityClient(<tClient>{
     token: process.env.NEXT_PUBLIC_TOKEN,
 });
 
-export const urlFor: any = (source: string) =>
-    imageUrlBuilder(client).image(source);
+export const urlFor = (source: string) => imageUrlBuilder(client).image(source);
+
+type tProducts = {
+    name: string;
+    description: string;
+    price: string;
+    categories: Array<string>;
+    imgUrl: string;
+};
+
+type tCategories = {
+    category: string;
+};
 
 type tThen = {
     to: React.Dispatch<React.SetStateAction<boolean>>;
@@ -28,7 +38,9 @@ type tThen = {
 
 type tQueries = {
     query: string;
-    to: React.Dispatch<React.SetStateAction<any[]>>[];
+    to:
+        | React.Dispatch<React.SetStateAction<tProducts[]>>[]
+        | React.Dispatch<React.SetStateAction<tCategories[]>>[];
 };
 
 type tDocument = {
@@ -41,7 +53,7 @@ type tDocument = {
     then: tThen[];
 };
 
-export const clientFetch = (queries: tQueries[]) => {
+export const clientFetch = (queries: tQueries[]): void => {
     for (let query of queries) {
         client.fetch(query.query).then((data) => {
             for (let _to of query.to) {
@@ -51,15 +63,11 @@ export const clientFetch = (queries: tQueries[]) => {
     }
 };
 
-export const clientFetchVar = (query: string) => {
-    const res = client.fetch(query).then((data) => {
-        return data;
-    });
-
-    return res;
+export const clientFetchVar = async (query: string): Promise<any> => {
+    return client.fetch(query).then((data) => data);
 };
 
-export const clientSendMessage = (documents: tDocument[]) => {
+export const clientSendMessage = (documents: tDocument[]): void => {
     for (let doc of documents) {
         client.create(doc.document).then(() => {
             for (let then of doc.then) {

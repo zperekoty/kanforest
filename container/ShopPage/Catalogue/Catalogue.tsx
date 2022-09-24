@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -53,6 +54,7 @@ const Catalogue = (): JSX.Element => {
                 to: [setCategories],
             },
         ];
+
         clientFetch(queries);
     }, []);
 
