@@ -26,7 +26,8 @@
     align-items: center;
     flex-direction: row;
 
-    margin-top: 20px;
+    // margin-top: 20px;
+    margin: 20px 0 auto;
 
     svg {
         width: 150px;
@@ -34,7 +35,7 @@
 
         fill: var(--neutral-color);
 
-        margin: 0 auto;
+        margin: 0 70px;
     }
 
     @media screen and (max-width: 896px) {
