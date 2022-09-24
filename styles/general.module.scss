@@ -1,0 +1,124 @@
+.aCon {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.aFl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.aWr {
+    flex: 1;
+    flex-direction: column;
+
+    width: 100%;
+
+    padding: 4rem 2rem;
+
+    @media screen and (max-width: 450px) {
+        padding: 4rem 1rem 2rem;
+    }
+}
+
+.app-sec-bg {
+    background-color: var(--sec-bg);
+}
+
+.motion-div {
+    opacity: 0;
+}
+
+.head-text {
+    font-size: 2.75rem;
+    font-weight: 800;
+
+    text-align: center;
+    text-transform: capitalize;
+
+    cursor: default;
+
+    color: var(--primary-color);
+
+    span {
+        color: var(--neutral-color);
+    }
+
+    @media screen and (min-width: 2000px) {
+        font-size: 4rem;
+    }
+
+    @media screen and (max-width: 450px) {
+        font-size: 2rem;
+    }
+}
+
+.sub-head-text {
+    margin-top: 20px;
+
+    font-size: 2.3rem;
+    font-weight: 800;
+
+    text-align: center;
+    text-transform: capitalize;
+
+    cursor: default;
+
+    color: var(--primary-color);
+
+    span {
+        color: var(--neutral-color);
+    }
+
+    @media screen and (min-width: 2000px) {
+        font-size: 3rem;
+    }
+
+    @media screen and (max-width: 450px) {
+        font-size: 1.7rem;
+    }
+}
+
+.overflow {
+    overflow-x: hidden;
+
+    position: relative;
+}
+
+.pTe {
+    font-size: 0.8rem;
+    font-weight: 800;
+
+    cursor: default;
+
+    color: var(--primary-color);
+
+    text-align-last: left;
+
+    @media screen and (min-width: 2000px) {
+        font-size: 1.75rem;
+    }
+}
+
+.bTe {
+    font-size: 1rem;
+    font-weight: 800;
+
+    cursor: default;
+
+    color: var(--primary-color);
+
+    text-align-last: left;
+
+    @media screen and (min-width: 2000px) {
+        font-size: 2rem;
+    }
+
+    @media screen and (max-width: 450px) {
+        font-size: 0.9rem;
+    }
+}

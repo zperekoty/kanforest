@@ -1,0 +1,53 @@
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap");
+
+/* Basic Properties */
+:root {
+    --font: "Rubik", sans-serif;
+
+    --primary-color: #f0f0ef;
+    --secondary-color: #5c6478;
+    --neutral-color: #6c64f5;
+
+    --footer-color: #f0f0ef;
+
+    --nav-bg: rgba(49, 57, 72, 0.3);
+    --nav-br: rgba(47, 55, 70, 0.2);
+
+    --main-bg: #2a313d;
+    --sec-bg: #3b4352;
+
+    --social-color: #f0f0ef;
+}
+
+/* Basic resets and styling */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+
+    font-family: var(--font);
+
+    margin: 0;
+    padding: 0;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--main-bg);
+
+    // overflow-x: hidden;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        --main-bg: white;
+        --sec-bg: #eeeeee;
+
+        --primary-color: #000;
+
+        --nav-bg: rgba(231, 231, 231, 0.3);
+        --nav-br: rgba(226, 226, 226, 0.2);
+    }
+}

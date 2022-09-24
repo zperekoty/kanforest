@@ -1,0 +1,91 @@
+.contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        width: 80px;
+        height: 80px;
+
+        fill: var(--neutral-color);
+    }
+}
+
+.cards {
+    width: 60%;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    // flex-wrap: wrap;
+
+    margin: 4rem 2rem 2rem;
+
+    @media screen and (max-width: 450px) {
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
+
+    @media screen and (max-width: 896px) {
+        flex-direction: column;
+    }
+}
+
+.card {
+    min-width: 290px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin: 1rem 1rem;
+    padding: 1rem;
+
+    border-radius: 20px;
+
+    background-color: darken(#484e5d, 20%);
+
+    transition: all 0.3s ease-in-out;
+
+    svg {
+        width: 40px;
+        height: 40px;
+
+        margin: 0 0.7rem;
+
+        fill: var(--neutral-color);
+    }
+
+    a {
+        text-decoration: none;
+
+        font-weight: 500;
+
+        color: var(--social-color);
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &:hover {
+        box-shadow: 0 0 25px #2a313d;
+    }
+
+    @media screen and (max-width: 450px) {
+        width: 100%;
+    }
+}

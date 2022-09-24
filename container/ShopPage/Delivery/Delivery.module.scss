@@ -1,0 +1,21 @@
+.delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        margin-left: 20px;
+
+        width: 80px;
+        height: 80px;
+
+        fill: var(--neutral-color);
+    }
+}

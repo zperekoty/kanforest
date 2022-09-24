@@ -1,0 +1,162 @@
+.f {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    padding: 3rem 2rem;
+
+    background-color: darken(#2a313d, 10%);
+
+    @media screen and (max-width: 450px) {
+        flex-direction: column;
+
+        padding: 1rem 0;
+    }
+}
+
+.fl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 30px;
+
+    a {
+        text-decoration: none;
+
+        height: 40px;
+
+        svg {
+            width: 200px !important;
+            height: 40px !important;
+
+            @media screen and (min-width: 2000px) {
+                width: 400px !important;
+                height: 80px !important;
+            }
+        }
+
+        @media screen and (min-width: 2000px) {
+            height: 80px;
+        }
+    }
+
+    @media screen and (min-width: 2000px) {
+        height: 80px;
+    }
+
+    @media screen and (max-width: 450px) {
+        margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 896px) {
+        margin: 0 2rem;
+    }
+}
+
+.fL {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+        list-style: none;
+
+        text-align: center;
+
+        li {
+            margin: 1rem 0;
+
+            a {
+                text-decoration: none;
+                text-transform: uppercase;
+
+                font-weight: 500;
+
+                color: var(--footer-color);
+
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.fp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    ul {
+        list-style: none;
+
+        li {
+            margin: 1rem 0;
+
+            text-align: center;
+
+            a {
+                width: 100%;
+
+                text-decoration: none;
+
+                font-weight: 500;
+
+                color: var(--footer-color);
+
+                transition: all 0.3s ease-in-out;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+
+                svg {
+                    width: 15px;
+                    height: 15px;
+
+                    margin: 0 0.3rem;
+
+                    fill: var(--neutral-color);
+                }
+            }
+        }
+    }
+}
+
+.fc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        color: var(--footer-color);
+
+        font-weight: 300;
+    }
+
+    a {
+        text-decoration: none;
+
+        font-weight: 500;
+
+        color: darken(#f0f0ef, 20%);
+
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        margin-top: 1rem;
+    }
+
+    @media screen and (max-width: 896px) {
+        margin: 0 2rem;
+    }
+}

@@ -1,0 +1,71 @@
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        width: 80px;
+        height: 80px;
+
+        fill: var(--neutral-color);
+    }
+}
+
+.address {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    color: var(--primary-color);
+
+    svg {
+        fill: var(--primary-color);
+    }
+
+    @media screen and (max-width: 450px) {
+        flex-direction: column;
+    }
+}
+
+.address-card {
+    padding: 1rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 50px 20px;
+
+    border: 1px solid var(--secondary-color);
+    border-radius: 20px;
+
+    background-color: var(--neutral-color);
+}
+
+.iframe {
+    border: 1px solid transparent;
+    border-radius: 20px;
+
+    width: 600px;
+    height: 400px;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        box-shadow: 0 0 25px var(--primary-color);
+    }
+
+    @media screen and (max-width: 450px) {
+        width: 85vw;
+        height: 60vh;
+    }
+}
