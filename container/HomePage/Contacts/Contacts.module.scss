@@ -11,6 +11,8 @@
     align-items: center;
 
     svg {
+        margin-left: 20px;
+
         width: 80px;
         height: 80px;
 
@@ -44,7 +46,7 @@
 }
 
 .card {
-    min-width: 290px;
+    min-width: 240px;
 
     display: flex;
     flex-direction: row;
