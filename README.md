@@ -8,4 +8,4 @@ Authors: [@zperekoty](https://github.com/zperekoty) and Alexey Shadyev `site own
 
 ## Project Link
 
-You can preview the project at [kan-forest.vercel.app](https://kan-forest.vercel.app)
+You can preview the project at [kanforest.vercel.app](https://kanforest.vercel.app)
