@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 
     margin-top: 20px;
 
@@ -35,6 +35,10 @@
         fill: var(--neutral-color);
 
         margin: 0 auto;
+    }
+
+    @media screen and (max-width: 896px) {
+        flex-direction: column;
     }
 }
 
