@@ -46,6 +46,10 @@ const Layout = ({ children, title, desc, kw, links }: Props): JSX.Element => {
                 />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="title" content={title} />
+                <meta
+                    name="google-site-verification"
+                    content="RDo5e_d1peoiDM0QDHcjJzuxjKxHN3661yCV64QI9ww"
+                />
                 <title>{title}</title>
             </Head>
 
