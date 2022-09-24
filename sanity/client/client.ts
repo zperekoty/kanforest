@@ -1,5 +1,6 @@
 import sanityClient from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { ImageUrlBuilder } from "@sanity/image-url/lib/types/builder";
 
 type tClient = {
     projectId: string;
@@ -17,7 +18,8 @@ export const client = sanityClient(<tClient>{
     token: process.env.NEXT_PUBLIC_TOKEN,
 });
 
-export const urlFor = (source: string) => imageUrlBuilder(client).image(source);
+export const urlFor: any = (source: string): ImageUrlBuilder =>
+    imageUrlBuilder(client).image(source);
 
 type tProducts = {
     name: string;
