@@ -44,6 +44,7 @@ const Layout = ({ children, title, desc, kw, links }: Props): JSX.Element => {
                     sizes="16x16"
                     href="/favicon-16x16.png"
                 />
+                <link rel="icon" href="/favicon.ico" />
                 <link rel="manifest" href="/site.webmanifest" />
                 <meta name="title" content={title} />
                 <meta
