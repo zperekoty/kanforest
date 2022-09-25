@@ -23,7 +23,7 @@ const Welcome = (): JSX.Element => {
                 >
                     <div className={styles.description}>
                         <p>
-                            <span>&copy; Kan Forest</span>
+                            <span>Kan Forest</span>
                             <br />
                             Мы работаем с 2015 года. За это время мы обзавелись
                             невероятным опытом, друзьями и клиентами. Мы умеем
