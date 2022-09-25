@@ -97,8 +97,14 @@ const Catalogue = (): JSX.Element => {
 
             <div className={classes.categories}>
                 {categories.map((category: tCategories, index: number) => (
-                    <div
+                    <motion.div
                         key={index}
+                        whileInView={{ y: [50, 0], opacity: [0, 1] }}
+                        transition={{
+                            duration: 0.5,
+                            delay: 0.3,
+                            ease: "easeInOut",
+                        }}
                         onClick={() => handleProductFilter(category.category)}
                         className={`${classes["categories__filter-item"]} ${
                             styles.aFL
@@ -109,7 +115,7 @@ const Catalogue = (): JSX.Element => {
                         }`}
                     >
                         {category.category}
-                    </div>
+                    </motion.div>
                 ))}
             </div>
 
@@ -122,6 +128,7 @@ const Catalogue = (): JSX.Element => {
                     <motion.div
                         key={index}
                         className={classes["category-portfolio-item"]}
+                        whileInView={{ y: [100, 0], opacity: [0, 1] }}
                         whileHover={{ scale: 1.05 }}
                         transition={{
                             type: "spring",
@@ -133,6 +140,7 @@ const Catalogue = (): JSX.Element => {
                             <img
                                 src={urlFor(product.imgUrl)}
                                 alt={product.name}
+                                loading="lazy"
                             />
                         </div>
 
