@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -8,10 +7,17 @@ import type { tVariants } from "../../../wrapper/MotionWrap";
 import { Product } from "../../../svg";
 import { styles } from "../../../styles";
 import classes from "./Catalogue.module.scss";
+import Image from "next/image";
 
 const variants: tVariants = { y: [100, 0], opacity: [0, 1] };
 
-const Catalogue = (): JSX.Element => {
+type tCat = { category: string };
+
+type Props = {
+    categories: tCat[];
+};
+
+const Catalogue = ({ categories }: Props): JSX.Element => {
     const [activeFilter, setActiveFilter] = useState<string>("Пиломатериалы");
     const [animateCard, setAnimateCard] = useState<any[]>([
         {
@@ -22,7 +28,6 @@ const Catalogue = (): JSX.Element => {
 
     const [products, setProducts] = useState<tProducts[]>([]);
     const [filterProducts, setFilterProducts] = useState<tProducts[]>([]);
-    const [categories, setCategories] = useState<tCategories[]>([]);
 
     type tProducts = {
         name: string;
@@ -32,15 +37,9 @@ const Catalogue = (): JSX.Element => {
         imgUrl: string;
     };
 
-    type tCategories = {
-        category: string;
-    };
-
     type tQueries = {
         query: string;
-        to:
-            | React.Dispatch<React.SetStateAction<tProducts[]>>[]
-            | React.Dispatch<React.SetStateAction<tCategories[]>>[];
+        to: React.Dispatch<React.SetStateAction<tProducts[]>>[];
     };
 
     useEffect(() => {
@@ -48,10 +47,6 @@ const Catalogue = (): JSX.Element => {
             {
                 query: '*[_type == "products"]',
                 to: [setProducts, setFilterProducts],
-            },
-            {
-                query: '*[_type == "categories"]',
-                to: [setCategories],
             },
         ];
 
@@ -67,7 +62,7 @@ const Catalogue = (): JSX.Element => {
 
             if (item !== "Все") {
                 return setFilterProducts(
-                    products.filter((product) =>
+                    products.filter((product: any) =>
                         product.categories.includes(item),
                     ),
                 );
@@ -87,93 +82,102 @@ const Catalogue = (): JSX.Element => {
     };
 
     return (
-        <>
-            <div className={classes["info-title"]}>
-                <h2 className={styles["head-text"]}>
-                    каталог <span>товаров</span>
-                </h2>
-                <Product />
-            </div>
+        <AppWrap idName="catalogue">
+            <MotionWrap classNames={classes.catalogue} variants={variants}>
+                <div className={classes["info-title"]}>
+                    <h2 className={styles["head-text"]}>
+                        каталог <span>товаров</span>
+                    </h2>
+                    <Product />
+                </div>
 
-            <div className={classes.categories}>
-                {categories.map((category: tCategories, index: number) => (
-                    <motion.div
-                        key={index}
-                        whileInView={{ y: [50, 0], opacity: [0, 1] }}
-                        transition={{
-                            duration: 0.5,
-                            delay: 0.3,
-                            ease: "easeInOut",
-                        }}
-                        onClick={() => handleProductFilter(category.category)}
-                        className={`${classes["categories__filter-item"]} ${
-                            styles.aFL
-                        } ${
-                            activeFilter === category.category
-                                ? classes["acvite-item"]
-                                : ""
-                        }`}
-                    >
-                        {category.category}
-                    </motion.div>
-                ))}
-            </div>
+                <div className={classes.categories}>
+                    {categories.map((category: tCat, index: number) => (
+                        <motion.div
+                            key={index}
+                            whileInView={{ y: [50, 0], opacity: [0, 1] }}
+                            transition={{
+                                duration: 0.5,
+                                delay: 0.3,
+                                ease: "easeInOut",
+                            }}
+                            onClick={() =>
+                                handleProductFilter(category.category)
+                            }
+                            className={`${classes["categories__filter-item"]} ${
+                                styles.aFl
+                            } ${
+                                activeFilter === category.category
+                                    ? classes["acvite-item"]
+                                    : ""
+                            }`}
+                        >
+                            {category.category}
+                        </motion.div>
+                    ))}
+                </div>
 
-            <motion.div
-                animate={animateCard}
-                transition={{ duration: 0.5, delayChildren: 0.5 }}
-                className={classes["category-portfolio"]}
-            >
-                {filterProducts.map((product: tProducts, index: number) => (
-                    <motion.div
-                        key={index}
-                        className={classes["category-portfolio-item"]}
-                        whileInView={{ y: [100, 0], opacity: [0, 1] }}
-                        whileHover={{ scale: 1.05 }}
-                        transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 10,
-                        }}
-                    >
-                        <div className={classes["category-portfolio-image"]}>
-                            <img
-                                src={urlFor(product.imgUrl)}
-                                alt={product.name}
-                                loading="lazy"
-                            />
-                        </div>
-
-                        <div className={classes["category-portfolio-card"]}>
-                            <h4 className={styles.bTe}>{product.name}</h4>
-                            <p className={styles.pTe} style={{ marginTop: 10 }}>
-                                {product.description}
-                            </p>
-                            <h5 className={styles.bTe}>
-                                {convertPrice(product.price)}
-                            </h5>
-
+                <motion.div
+                    animate={animateCard}
+                    transition={{ duration: 0.5, delayChildren: 0.5 }}
+                    className={classes["category-portfolio"]}
+                >
+                    {filterProducts.map((product: tProducts, index: number) => (
+                        <motion.div
+                            key={index}
+                            className={classes["category-portfolio-item"]}
+                            whileInView={{ y: [100, 0], opacity: [0, 1] }}
+                            whileHover={{ scale: 1.05 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 10,
+                            }}
+                        >
                             <div
-                                className={
-                                    classes["category-portfolio-card-tag"]
-                                }
+                                className={classes["category-portfolio-image"]}
                             >
+                                <Image
+                                    src={urlFor(product.imgUrl).url()}
+                                    alt={product.name}
+                                    layout="fill"
+                                    priority
+                                />
+                            </div>
+
+                            <div className={classes["category-portfolio-card"]}>
+                                <h4 className={styles.bTe}>{product.name}</h4>
                                 <p
                                     className={styles.pTe}
-                                    style={{ color: "var(--neutral-color)" }}
+                                    style={{ marginTop: 10 }}
                                 >
-                                    {product.categories[0]}
+                                    {product.description}
                                 </p>
+                                <h5 className={styles.bTe}>
+                                    {convertPrice(product.price)}
+                                </h5>
+
+                                <div
+                                    className={
+                                        classes["category-portfolio-card-tag"]
+                                    }
+                                >
+                                    <p
+                                        className={styles.pTe}
+                                        style={{
+                                            color: "var(--neutral-color)",
+                                        }}
+                                    >
+                                        {product.categories[0]}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                    </motion.div>
-                ))}
-            </motion.div>
-        </>
+                        </motion.div>
+                    ))}
+                </motion.div>
+            </MotionWrap>
+        </AppWrap>
     );
 };
 
-export default AppWrap(
-    MotionWrap(Catalogue, classes.catalogue, variants),
-    "catalogue",
-);
+export default Catalogue;

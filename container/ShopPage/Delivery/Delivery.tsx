@@ -17,26 +17,25 @@ const Delivery = (): JSX.Element => {
     };
 
     return (
-        <>
-            <div className={classes["info-title"]}>
-                <h2 className={styles["head-text"]}>
-                    условия <span>доставки</span>
-                </h2>
-                <DeliveryTruck />
-            </div>
+        <AppWrap idName="delivery">
+            <MotionWrap classNames={classes.delivery} variants={variants}>
+                <div className={classes["info-title"]}>
+                    <h2 className={styles["head-text"]}>
+                        условия <span>доставки</span>
+                    </h2>
+                    <DeliveryTruck />
+                </div>
 
-            <section>
-                <h3 className={styles["sub-head-text"]}>
-                    Доставляем наши товары по станице <span>Каневская</span> и
-                    станице <span>стародеревянковская</span> всего за{" "}
-                    <span>{convertPrice(price)}</span>
-                </h3>
-            </section>
-        </>
+                <section>
+                    <h3 className={styles["sub-head-text"]}>
+                        Доставляем наши товары по станице <span>Каневская</span>{" "}
+                        и станице <span>стародеревянковская</span> всего за{" "}
+                        <span>{convertPrice(price)}</span>
+                    </h3>
+                </section>
+            </MotionWrap>
+        </AppWrap>
     );
 };
 
-export default AppWrap(
-    MotionWrap(Delivery, classes.delivery, variants),
-    "delivery",
-);
+export default Delivery;

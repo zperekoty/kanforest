@@ -8,32 +8,31 @@ const variants: tVariants = { y: [-100, 0], opacity: [0, 1] };
 
 const Payments = (): JSX.Element => {
     return (
-        <>
-            <div className={classes["info-title"]}>
-                <h2 className={styles["head-text"]}>
-                    способы <span>оплаты</span>
-                </h2>
-                <Card />
-            </div>
-
-            <section className={classes.info}>
-                <h3 className={styles["sub-head-text"]}>
-                    поддерживаем самые <span>популярные</span> способы оплаты
-                </h3>
-
-                <div className={classes["payments-cards"]}>
-                    <Visa />
-                    <MasterCard />
-                    <JCB />
-                    <WorldPay />
+        <AppWrap idName="payments" classNames={styles["app-sec-bg"]}>
+            <MotionWrap classNames={classes.payments} variants={variants}>
+                <div className={classes["info-title"]}>
+                    <h2 className={styles["head-text"]}>
+                        способы <span>оплаты</span>
+                    </h2>
+                    <Card />
                 </div>
-            </section>
-        </>
+
+                <section className={classes.info}>
+                    <h3 className={styles["sub-head-text"]}>
+                        поддерживаем самые <span>популярные</span> способы
+                        оплаты
+                    </h3>
+
+                    <div className={classes["payments-cards"]}>
+                        <Visa />
+                        <MasterCard />
+                        <JCB />
+                        <WorldPay />
+                    </div>
+                </section>
+            </MotionWrap>
+        </AppWrap>
     );
 };
 
-export default AppWrap(
-    MotionWrap(Payments, classes.payments, variants),
-    "payments",
-    styles["app-sec-bg"],
-);
+export default Payments;

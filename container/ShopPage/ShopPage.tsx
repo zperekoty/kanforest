@@ -2,7 +2,7 @@ import { Layout } from "../";
 import { Catalogue, Payments, Delivery, Map, Contacts } from "./";
 import { styles } from "../../styles";
 
-const ShopPage = () => {
+const ShopPage = ({ categories }: any) => {
     type tLinks = { name: string; anchor: string };
 
     const links: tLinks[] = [
@@ -22,7 +22,7 @@ const ShopPage = () => {
                 kw="Лес, Лес Каневская, Каневская, купить лес каневская, лес каневская купить, лес купить каневская, купить лес, лес купить"
                 links={links}
             >
-                <Catalogue />
+                <Catalogue categories={categories} />
                 <Payments />
                 <Delivery />
                 <Map />

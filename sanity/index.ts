@@ -1,1 +1,1 @@
-export { urlFor, clientFetch, clientFetchVar, client } from "./client/client";
+export { urlFor, clientFetch } from "./client/client";

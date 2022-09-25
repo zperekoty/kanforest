@@ -10,57 +10,60 @@ const variants: tVariants = { x: [100, 0], opacity: [0, 1] };
 
 const Welcome = (): JSX.Element => {
     return (
-        <>
-            <div>
-                <motion.div
-                    whileInView={{ scale: [1.1, 1] }}
-                    transition={{
-                        duration: 0.5,
-                        ease: "easeInOut",
-                        delay: 0.2,
-                    }}
-                    className={styles["hero-info"]}
-                >
-                    <div className={styles.description}>
-                        <p>
-                            <span>Kan Forest</span>
-                            <br />
-                            Мы работаем с 2015 года. За это время мы обзавелись
-                            невероятным опытом, друзьями и клиентами. Мы умеем
-                            делать интересные, необычные и качественные объекты.
-                            <br />
-                            <span>Люди Доверяют Нам Свои Дома</span>
-                        </p>
-                    </div>
-
+        <AppWrap idName="about">
+            <MotionWrap classNames={styles.welcome} variants={variants}>
+                <div>
                     <motion.div
-                        className={styles.svg}
-                        whileHover={{ scale: 1.05 }}
+                        whileInView={{ scale: [1.1, 1] }}
                         transition={{
-                            type: "spring",
-                            stiffness: 400,
-                            damping: 10,
+                            duration: 0.5,
+                            ease: "easeInOut",
+                            delay: 0.2,
                         }}
+                        className={styles["hero-info"]}
                     >
-                        <Hero />
-                    </motion.div>
-                </motion.div>
+                        <div className={styles.description}>
+                            <p>
+                                <span>Kan Forest</span>
+                                <br />
+                                Мы работаем с 2015 года. За это время мы
+                                обзавелись невероятным опытом, друзьями и
+                                клиентами. Мы умеем делать интересные, необычные
+                                и качественные объекты.
+                                <br />
+                                <span>Люди Доверяют Нам Свои Дома</span>
+                            </p>
+                        </div>
 
-                <div className={styles["hero-other"]}>
-                    <div className={styles.other}>
-                        <p>
-                            Так же у нас есть свой{" "}
-                            <Link href="/shop">
-                                <a>магазин</a>
-                            </Link>
-                            . Там вы можете ознакомиться с каталогом наших
-                            товаров.
-                        </p>
+                        <motion.div
+                            className={styles.svg}
+                            whileHover={{ scale: 1.05 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 400,
+                                damping: 10,
+                            }}
+                        >
+                            <Hero />
+                        </motion.div>
+                    </motion.div>
+
+                    <div className={styles["hero-other"]}>
+                        <div className={styles.other}>
+                            <p>
+                                Так же у нас есть свой{" "}
+                                <Link href="/shop">
+                                    <a>магазин</a>
+                                </Link>
+                                . Там вы можете ознакомиться с каталогом наших
+                                товаров.
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </>
+            </MotionWrap>
+        </AppWrap>
     );
 };
 
-export default AppWrap(MotionWrap(Welcome, styles.welcome, variants), "about");
+export default Welcome;
