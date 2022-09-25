@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 
-import { NotFoundPage } from "../container/404";
+import { NotFoundPage } from "../container";
 
 const notFound: NextPage = (): JSX.Element => {
     return (

@@ -1,7 +1,7 @@
 import { Layout } from "../";
-import { NF } from "./";
+import { ISE } from "./";
 
-const NotFoundPage = (): JSX.Element => {
+const IntServerError = (): JSX.Element => {
     type tLinks = { name: string; anchor: string };
 
     const links: tLinks[] = [
@@ -12,15 +12,15 @@ const NotFoundPage = (): JSX.Element => {
     return (
         <>
             <Layout
-                title="Лес Каневская — Страница не найдена"
-                desc="Страница не найдена | 404"
+                title="Лес Каневская — Внутренняя ошибка сервера"
+                desc="Внутренняя ошибка сервера | 500"
                 kw=""
                 links={links}
             >
-                <NF />
+                <ISE />
             </Layout>
         </>
     );
 };
 
-export default NotFoundPage;
+export default IntServerError;
