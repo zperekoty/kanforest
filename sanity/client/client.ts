@@ -25,11 +25,18 @@ type tProducts = {
     price: string;
     categories: Array<string>;
     imgUrl: string;
+    _id: string;
+};
+
+type tCategories = {
+    category: string;
 };
 
 type tQueries = {
     query: string;
-    to: React.Dispatch<React.SetStateAction<tProducts[]>>[];
+    to:
+        | React.Dispatch<React.SetStateAction<tProducts[]>>[]
+        | React.Dispatch<React.SetStateAction<tCategories[]>>[];
 };
 
 export const clientFetch = (queries: tQueries[]): void => {

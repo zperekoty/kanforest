@@ -20,6 +20,14 @@
     --social-color: #f0f0ef;
 }
 
+::selection {
+    background: rgb(66, 28, 219);
+}
+
+::-moz-selection {
+    background: rgb(66, 28, 219);
+}
+
 /* Basic resets and styling */
 *,
 *::before,
@@ -36,8 +44,6 @@
 
 body {
     background-color: var(--main-bg);
-
-    // overflow-x: hidden;
 }
 
 @media (prefers-color-scheme: light) {

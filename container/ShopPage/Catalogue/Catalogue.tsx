@@ -1,23 +1,19 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
 
 import { urlFor, clientFetch } from "../../../sanity";
 import { AppWrap, MotionWrap } from "../../../wrapper";
 import type { tVariants } from "../../../wrapper/MotionWrap";
 import { Product } from "../../../svg";
 import { styles } from "../../../styles";
+import { converter } from "../../../utils";
 import classes from "./Catalogue.module.scss";
-import Image from "next/image";
 
 const variants: tVariants = { y: [100, 0], opacity: [0, 1] };
 
-type tCat = { category: string };
-
-type Props = {
-    categories: tCat[];
-};
-
-const Catalogue = ({ categories }: Props): JSX.Element => {
+const Catalogue = (): JSX.Element => {
     const [activeFilter, setActiveFilter] = useState<string>("Пиломатериалы");
     const [animateCard, setAnimateCard] = useState<any[]>([
         {
@@ -28,6 +24,9 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
 
     const [products, setProducts] = useState<tProducts[]>([]);
     const [filterProducts, setFilterProducts] = useState<tProducts[]>([]);
+    const [categories, setCategories] = useState<tCategories[]>([]);
+
+    type tCategories = { category: string };
 
     type tProducts = {
         name: string;
@@ -35,11 +34,14 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
         price: string;
         categories: Array<string>;
         imgUrl: string;
+        _id: string;
     };
 
     type tQueries = {
         query: string;
-        to: React.Dispatch<React.SetStateAction<tProducts[]>>[];
+        to:
+            | React.Dispatch<React.SetStateAction<tProducts[]>>[]
+            | React.Dispatch<React.SetStateAction<tCategories[]>>[];
     };
 
     useEffect(() => {
@@ -47,6 +49,10 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
             {
                 query: '*[_type == "products"]',
                 to: [setProducts, setFilterProducts],
+            },
+            {
+                query: '*[_type == "categories"]',
+                to: [setCategories],
             },
         ];
 
@@ -72,19 +78,10 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
         }, 500);
     };
 
-    const convertPrice = (previousPrice: string): string => {
-        const newPrice = parseInt(previousPrice).toLocaleString("ru-RU", {
-            style: "currency",
-            currency: "RUB",
-        });
-
-        return newPrice;
-    };
-
     return (
         <AppWrap idName="catalogue">
             <MotionWrap classNames={classes.catalogue} variants={variants}>
-                <div className={classes["info-title"]}>
+                <div className={styles["info-title"]}>
                     <h2 className={styles["head-text"]}>
                         каталог <span>товаров</span>
                     </h2>
@@ -92,7 +89,7 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
                 </div>
 
                 <div className={classes.categories}>
-                    {categories.map((category: tCat, index: number) => (
+                    {categories.map((category: tCategories, index: number) => (
                         <motion.div
                             key={index}
                             whileInView={{ y: [50, 0], opacity: [0, 1] }}
@@ -122,31 +119,47 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
                     transition={{ duration: 0.5, delayChildren: 0.5 }}
                     className={classes["category-portfolio"]}
                 >
-                    {filterProducts.map((product: tProducts, index: number) => (
+                    {filterProducts.map((product: tProducts) => (
                         <motion.div
-                            key={index}
                             className={classes["category-portfolio-item"]}
-                            whileInView={{ y: [100, 0], opacity: [0, 1] }}
+                            whileInView={{
+                                y: [100, 0],
+                                opacity: [0, 1],
+                            }}
                             whileHover={{ scale: 1.05 }}
                             transition={{
                                 type: "spring",
                                 stiffness: 400,
                                 damping: 10,
                             }}
+                            key={product._id}
                         >
                             <div
                                 className={classes["category-portfolio-image"]}
                             >
-                                <Image
-                                    src={urlFor(product.imgUrl).url()}
-                                    alt={product.name}
-                                    layout="fill"
-                                    priority
-                                />
+                                <Link href={`/shop/${product._id}`}>
+                                    <a style={{ textDecoration: "none" }}>
+                                        <Image
+                                            src={urlFor(product.imgUrl).url()}
+                                            alt={product.name}
+                                            layout="fill"
+                                            priority
+                                        />
+                                    </a>
+                                </Link>
                             </div>
 
                             <div className={classes["category-portfolio-card"]}>
-                                <h4 className={styles.bTe}>{product.name}</h4>
+                                <Link href={`/shop/${product._id}`}>
+                                    <a>
+                                        <h4
+                                            className={styles.bTe}
+                                            style={{ cursor: "pointer" }}
+                                        >
+                                            {product.name}
+                                        </h4>
+                                    </a>
+                                </Link>
                                 <p
                                     className={styles.pTe}
                                     style={{ marginTop: 10 }}
@@ -154,7 +167,7 @@ const Catalogue = ({ categories }: Props): JSX.Element => {
                                     {product.description}
                                 </p>
                                 <h5 className={styles.bTe}>
-                                    {convertPrice(product.price)}
+                                    {converter(product.price)}
                                 </h5>
 
                                 <div

@@ -1,5 +1,6 @@
 import { Layout } from "../";
-import { Welcome, Map, Contacts } from "./";
+import { Welcome } from "./";
+import { Map, Contacts } from "../../components";
 import { styles } from "../../styles";
 
 const HomePage = (): JSX.Element => {
@@ -21,7 +22,7 @@ const HomePage = (): JSX.Element => {
                 links={links}
             >
                 <Welcome />
-                <Map />
+                <Map color={styles["app-sec-bg"]} />
                 <Contacts />
             </Layout>
         </div>

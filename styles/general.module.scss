@@ -33,6 +33,21 @@
     opacity: 0;
 }
 
+.info-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg {
+        margin-left: 20px;
+
+        width: 80px;
+        height: 80px;
+
+        fill: var(--neutral-color);
+    }
+}
+
 .head-text {
     font-size: 2.75rem;
     font-weight: 800;

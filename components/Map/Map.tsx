@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 
-import { AppWrap, MotionWrap } from "../../../wrapper";
-import { styles } from "../../../styles";
-import type { tVariants } from "../../../wrapper/MotionWrap";
-import { Location, Office, Stock } from "../../../svg";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { styles } from "../../styles";
+import type { tVariants } from "../../wrapper/MotionWrap";
+import { Location, Office, Stock } from "../../svg";
 import classes from "./Map.module.scss";
 
 const variants: tVariants = { x: [-100, 0], opacity: [0, 1] };
 
-const Map = () => {
+type Props = {
+    color?: string;
+};
+
+const Map = ({ color }: Props): JSX.Element => {
     return (
-        <AppWrap idName="map" classNames={styles["app-sec-bg"]}>
+        <AppWrap idName="map" classNames={color}>
             <MotionWrap classNames={classes.map} variants={variants}>
                 <div className={classes["info-title"]}>
                     <h2 className={styles["head-text"]}>

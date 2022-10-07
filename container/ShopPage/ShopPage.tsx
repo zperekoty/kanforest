@@ -1,15 +1,15 @@
 import { Layout } from "../";
-import { Catalogue, Payments, Delivery, Map, Contacts } from "./";
+import { Catalogue, Payments } from "./";
+import { Map, Contacts } from "../../components";
 import { styles } from "../../styles";
 
-const ShopPage = ({ categories }: any) => {
+const ShopPage = (): JSX.Element => {
     type tLinks = { name: string; anchor: string };
 
     const links: tLinks[] = [
         { name: "главная", anchor: "/" },
         { name: "каталог товаров", anchor: "#catalogue" },
         { name: "способы оплаты", anchor: "#payments" },
-        { name: "условия доставки", anchor: "#delivery" },
         { name: "где нас найти", anchor: "#map" },
         { name: "контакты", anchor: "#contacts" },
     ];
@@ -22,11 +22,10 @@ const ShopPage = ({ categories }: any) => {
                 kw="Лес, Лес Каневская, Каневская, купить лес каневская, лес каневская купить, лес купить каневская, купить лес, лес купить"
                 links={links}
             >
-                <Catalogue categories={categories} />
+                <Catalogue />
                 <Payments />
-                <Delivery />
                 <Map />
-                <Contacts />
+                <Contacts color={styles["app-sec-bg"]} />
             </Layout>
         </div>
     );

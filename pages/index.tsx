@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 
 import { HomePage } from "../container";
 
-const Home: NextPage = () => {
+const Home: NextPage = (): JSX.Element => {
     return (
         <>
             <HomePage />

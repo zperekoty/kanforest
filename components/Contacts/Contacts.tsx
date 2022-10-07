@@ -1,14 +1,18 @@
-import { AppWrap, MotionWrap } from "../../../wrapper";
-import type { tVariants } from "../../../wrapper/MotionWrap";
-import { PhoneTitle, Phone, WhatsApp } from "../../../svg";
-import { styles } from "../../../styles";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import type { tVariants } from "../../wrapper/MotionWrap";
+import { PhoneTitle, Phone, WhatsApp } from "../../svg";
+import { styles } from "../../styles";
 import classes from "./Contacts.module.scss";
 
-const variants: tVariants = { x: [100, 0], opacity: [0, 1] };
+const variants: tVariants = { y: [-200, 0], opacity: [0, 1] };
 
-const Contacts = () => {
+type Props = {
+    color?: string;
+};
+
+const Contacts = ({ color }: Props): JSX.Element => {
     return (
-        <AppWrap idName="contacts">
+        <AppWrap idName="contacts" classNames={color}>
             <MotionWrap classNames={classes.contacts} variants={variants}>
                 <div className={classes["info-title"]}>
                     <h2 className={styles["head-text"]}>

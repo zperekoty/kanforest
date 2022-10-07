@@ -5,21 +5,6 @@
     padding: 32px 0;
 }
 
-.info-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    svg {
-        margin-left: 20px;
-
-        width: 80px;
-        height: 80px;
-
-        fill: var(--neutral-color);
-    }
-}
-
 .categories {
     display: flex;
     flex-direction: row;
@@ -80,7 +65,7 @@
         justify-content: center;
         align-items: center;
 
-        width: 270px;
+        width: 250px;
         min-height: 363px;
 
         flex-direction: column;
@@ -153,10 +138,12 @@
 
     flex-direction: column;
 
-    h4 {
+    a {
         margin-top: 1rem;
 
         line-height: 1.5;
+
+        text-decoration: none;
     }
 
     .category-portfolio-card-tag {
