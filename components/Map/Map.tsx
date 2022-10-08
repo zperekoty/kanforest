@@ -16,7 +16,7 @@ const Map = ({ color }: Props): JSX.Element => {
     return (
         <AppWrap idName="map" classNames={color}>
             <MotionWrap classNames={classes.map} variants={variants}>
-                <div className={classes["info-title"]}>
+                <div className={styles["info-title"]}>
                     <h2 className={styles["head-text"]}>
                         где нас <span>найти</span>
                     </h2>

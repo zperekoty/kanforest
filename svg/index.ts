@@ -14,3 +14,4 @@ export { default as MasterCard } from "./MasterCard";
 export { default as Card } from "./Card";
 export { default as DeliveryTruck } from "./DeliveryTruck";
 export { default as NoImage } from "./NoImage";
+export { default as ProductItem } from "./ProductItem";

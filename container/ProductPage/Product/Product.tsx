@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { urlFor } from "../../../sanity";
 import { converter } from "../../../utils";
 import { AppWrap, MotionWrap } from "../../../wrapper";
-import { NoImage } from "../../../svg";
+import { NoImage, ProductItem } from "../../../svg";
 import type { tVariants } from "../../../wrapper/MotionWrap";
 import classes from "./Product.module.scss";
 import { styles } from "../../../styles";
@@ -36,6 +36,7 @@ const Product = ({ product }: Props): JSX.Element => {
                         <h2 className={styles["head-text"]}>
                             <span>{product[0]?.name}</span>
                         </h2>
+                        <ProductItem />
                     </div>
 
                     <div className={classes["product-item"]}>
