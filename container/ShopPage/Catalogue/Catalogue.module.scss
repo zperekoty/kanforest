@@ -120,6 +120,13 @@
         object-fit: cover !important;
     }
 
+    svg {
+        width: 200px;
+        height: 200px;
+
+        fill: var(--no-img);
+    }
+
     @media screen and (min-width: 2000px) {
         height: 350px;
     }

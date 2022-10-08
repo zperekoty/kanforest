@@ -6,9 +6,10 @@ import Image from "next/image";
 import { urlFor, clientFetch } from "../../../sanity";
 import { AppWrap, MotionWrap } from "../../../wrapper";
 import type { tVariants } from "../../../wrapper/MotionWrap";
-import { Product } from "../../../svg";
+import { Product, NoImage } from "../../../svg";
 import { styles } from "../../../styles";
 import { converter } from "../../../utils";
+import noImage from "../../../public/noImage.svg";
 import classes from "./Catalogue.module.scss";
 
 const variants: tVariants = { y: [100, 0], opacity: [0, 1] };
@@ -139,12 +140,18 @@ const Catalogue = (): JSX.Element => {
                             >
                                 <Link href={`/shop/${product._id}`}>
                                     <a style={{ textDecoration: "none" }}>
-                                        <Image
-                                            src={urlFor(product.imgUrl).url()}
-                                            alt={product.name}
-                                            layout="fill"
-                                            priority
-                                        />
+                                        {product.imgUrl ? (
+                                            <Image
+                                                src={urlFor(
+                                                    product.imgUrl,
+                                                ).url()}
+                                                alt={product.name}
+                                                layout="fill"
+                                                priority
+                                            />
+                                        ) : (
+                                            <NoImage />
+                                        )}
                                     </a>
                                 </Link>
                             </div>

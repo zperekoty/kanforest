@@ -42,6 +42,18 @@
             }
         }
     }
+
+    svg {
+        width: 400px !important;
+        height: 350px !important;
+
+        fill: var(--no-img);
+
+        @media screen and (max-width: 973px) {
+            width: 300px !important;
+            height: 250px !important;
+        }
+    }
 }
 
 .product-info {

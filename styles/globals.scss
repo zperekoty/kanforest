@@ -18,6 +18,8 @@
     --sec-bg: #3b4352;
 
     --social-color: #f0f0ef;
+
+    --no-img: #000;
 }
 
 ::selection {
@@ -55,5 +57,7 @@ body {
 
         --nav-bg: rgba(231, 231, 231, 0.3);
         --nav-br: rgba(226, 226, 226, 0.2);
+
+        --no-img: #fff;
     }
 }

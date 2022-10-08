@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { urlFor } from "../../../sanity";
 import { converter } from "../../../utils";
 import { AppWrap, MotionWrap } from "../../../wrapper";
+import { NoImage } from "../../../svg";
 import type { tVariants } from "../../../wrapper/MotionWrap";
 import classes from "./Product.module.scss";
 import { styles } from "../../../styles";
@@ -39,13 +40,17 @@ const Product = ({ product }: Props): JSX.Element => {
 
                     <div className={classes["product-item"]}>
                         <div className={classes["product-image"]}>
-                            <Image
-                                src={urlFor(product[0]?.imgUrl).url()}
-                                alt={product[0]?.name}
-                                width={200}
-                                height={200}
-                                priority
-                            />
+                            {product[0]?.imgUrl ? (
+                                <Image
+                                    src={urlFor(product[0]?.imgUrl).url()}
+                                    alt={product[0]?.name}
+                                    width={200}
+                                    height={200}
+                                    priority
+                                />
+                            ) : (
+                                <NoImage />
+                            )}
                         </div>
 
                         <div className={classes["product-info"]}>
