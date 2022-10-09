@@ -2,6 +2,7 @@
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 import "../styles/globals.scss";
 import { Loader } from "../components";
@@ -28,10 +29,32 @@ const appWrapper = ({ Component, pageProps }: AppProps): JSX.Element => {
     }, [router]);
 
     return (
-        <>
+        <AnimatePresence exitBeforeEnter>
+            <motion.div
+                key={router.route}
+                initial="initialState"
+                animate="animateState"
+                exit="exitState"
+                transition={{ duration: 0.65 }}
+                variants={{
+                    initialState: {
+                        opacity: 0,
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+                    },
+                    animateState: {
+                        opacity: 1,
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+                    },
+                    exitState: {
+                        clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
+                    },
+                }}
+            >
+                <Component {...pageProps} />
+            </motion.div>
+
             {loading && <Loader />}
-            <Component {...pageProps} />
-        </>
+        </AnimatePresence>
     );
 };
 
